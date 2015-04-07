@@ -20,7 +20,10 @@
   forbidden
 }.each { |name| require "flip/#{name}" }
 
-require "flip/engine" if defined?(Rails)
+if defined?(Rails)
+  require "flip/engine"
+  require 'flip/features_presenter'
+end
 
 module Flip
   extend Facade
