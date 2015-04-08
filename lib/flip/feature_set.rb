@@ -21,9 +21,13 @@ module Flip
 
     # Whether the given feature is switched on.
     def on? key
-      d = @definitions[key]
+      d = key.is_a?(Definition) ? key : @definitions[key]
       @strategies.each_value { |s| return s.on?(d) if s.knows?(d) }
       default_for d
+    end
+
+    def knows? key
+      true
     end
 
     # Adds a feature definition to the set.

@@ -5,7 +5,17 @@ module Flip
       self.class.name.split("::").last.gsub(/Strategy$/, "").underscore
     end
 
-    def description; ""; end
+    def display_name
+      I18n.t("flip.strategy.#{name}.name")
+    end
+
+    def description_key
+      "flip.strategy.#{name}.description"
+    end
+
+    def description
+      I18n.t(description_key)
+    end
 
     # Whether the strategy knows the on/off state of the switch.
     def knows? definition; raise; end

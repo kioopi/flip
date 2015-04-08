@@ -16,7 +16,7 @@ module Flip
     private
 
     def turn_on?
-      params[:commit] == "Switch On"
+      params[:commit] == "activate"
     end
 
     def feature_key
@@ -26,6 +26,5 @@ module Flip
     def strategy
       FeatureSet.instance.strategy(params[:id])
     end
-
   end
 end

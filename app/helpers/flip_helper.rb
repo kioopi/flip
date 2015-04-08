@@ -5,5 +5,4 @@ module FlipHelper
   def feature?(key)
     Flip.on? key
   end
-
 end

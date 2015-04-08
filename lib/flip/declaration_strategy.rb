@@ -3,10 +3,6 @@
 module Flip
   class DeclarationStrategy < AbstractStrategy
 
-    def description
-      "The default status declared with the feature."
-    end
-
     def knows? definition
       !definition.options[:default].nil?
     end

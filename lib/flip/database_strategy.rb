@@ -6,10 +6,6 @@ module Flip
       @klass = model_klass
     end
 
-    def description
-      "Database backed, applies to all users."
-    end
-
     def knows? definition
       !!feature(definition)
     end

@@ -1,58 +1,41 @@
 <table>
   <thead>
-    <th class="name">Feature Name</th>
-    <th class="description">Description</th>
-    <th class="status">Status</th>
+    <th class="name"><%= t('flip.feature.name') %></th>
+    <th class="description"><%= t('flip.feature.description') %></th>
+    <th class="status"><%= t('flip.feature.state') %></th>
+
     <% presenter.strategies.each do |strategy| %>
       <th>
-      <%= strategy.name %>
-      <span class="description"><%= strategy.description %></span>
-    </th>
-  <% end %>
-    <th>
-      Default
-      <span class="description">The system default when no strategies match.</span>
+        <span class="name"><%= strategy.display_name %></span>
+        <span class="description"><%= strategy.description %></span>
+      </th>
+    <% end %>
+      <th>
     </th>
   </thead>
+
   <tbody>
   <% presenter.definitions.each do |definition| %>
     <tr>
     <td class="name"><%= definition.name %></td>
-
     <td class="description"><%= definition.description %></td>
 
-    <%= content_tag :td, class: presenter.status(definition) do %>
-      <%= presenter.status definition %>
-  <% end %>
+    <% label, css = presenter.label_and_css_for(definition) %>
+    <%= content_tag :td, label, class: css %>
 
     <% presenter.strategies.each do |strategy| %>
-      <%= content_tag :td, class: presenter.strategy_status(strategy, definition) || "pass" do %>
-      <%= presenter.strategy_status strategy, definition %>
+      <% label, css = presenter.label_and_css_for(definition, strategy) %>
 
-    <% if strategy.switchable? %>
-      <%= form_tag(presenter.switch_url(strategy, definition), method: :put) do %>
-      <% unless presenter.strategy_status(strategy, definition) == "on" %>
-      <%= submit_tag "Switch On" %>
-  <% end %>
-    <% unless presenter.strategy_status(strategy, definition) == "off" %>
-      <%= submit_tag "Switch Off" %>
-  <% end %>
-  <% end %>
-    <% unless presenter.strategy_status(strategy, definition).blank? %>
-      <%= form_tag(presenter.switch_url(strategy, definition), method: :delete) do %>
-      <%= submit_tag "Delete" %>
-  <% end %>
-  <% end %>
-  <% end %>
+      <%= content_tag :td, class: css do %>
+        <span><%= label %></span>
 
+        <% presenter.forms(strategy, definition).each do |form| %>
+          <%= button_form(form) %>
+        <% end %>
+      <% end %>
   <% end %>
-  <% end %>
-
-    <%= content_tag :td, class: presenter.default_status(definition) do %>
-      <%= presenter.default_status definition %>
-  <% end %>
-
   </tr>
-<% end %>
+  <% end %>
   </tbody>
+
 </table>

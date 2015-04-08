@@ -2,10 +2,6 @@
 module Flip
   class CookieStrategy < AbstractStrategy
 
-    def description
-      "Uses cookies to apply only to your session."
-    end
-
     def knows? definition
       cookies.key? cookie_name(definition)
     end

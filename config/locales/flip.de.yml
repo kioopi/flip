@@ -1,0 +1,28 @@
+de:
+  flip:
+    state:
+      'on': "An"
+      'off': "Aus"
+      pass: ""
+      button:
+        'on': "Anschalten"
+        'off': "Abschalten"
+        delete: "Entfernen"
+    feature:
+      name: "Name"
+      description: "Beschreibung"
+      state: "Status"
+    strategy:
+      cookie:
+        name: "Cookie"
+        description: "Nur lokal zum Testen"
+      database:
+        name: "Datenbank"
+        description: "Für alle Nutzer"
+      declaration:
+        name: "Standard"
+        description: "Standardwert"
+      system:
+        name: "System"
+        description: "System-Standardwert"
+

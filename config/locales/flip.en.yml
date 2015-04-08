@@ -1,0 +1,27 @@
+en:
+  flip:
+    state:
+      'on': "On"
+      'off': "Off"
+      pass: ""
+      button:
+        'on': "Switch On"
+        'off': "Switch Off"
+        delete: "Delete"
+    feature:
+      name: "Name"
+      description: "Description"
+      state: "State"
+    strategy:
+      cookie:
+        name: "Cookie"
+        description: "Uses cookies to apply only to your session."
+      database:
+        name: "Database"
+        description: "Database backed, applies to all users."
+      declaration:
+        name: "Default"
+        description: "The default status declared with the feature."
+      system:
+        name: "System"
+        description: "The system default when no strategies match."
